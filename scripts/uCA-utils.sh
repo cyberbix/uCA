@@ -22,7 +22,7 @@ function init_globals () {
 function make_file_structure () {
     destroy_file_structure
     pushd ${cadir} >/dev/null
-    mkdir certs crl csrs newcerts private
+    mkdir certs crl csrs newcerts private export
     chmod 0700 private
     touch index.txt crlnumber
     echo 1000 > serial
@@ -47,8 +47,8 @@ function generate_CA () {
     touch ${cacert}
     chmod 0644 ${cacert}
     export PP=${pp}
-    openssl req ${cfg} -new -x509 -days 1825 -key ${cakey} -sha256 \
-	-extensions v3_ca -out ${cacert} -passin env:PP -batch
+    openssl req ${cfg} -new -x509 -days 3650 -key ${cakey} -sha256 \
+      -extensions v3_ca -out ${cacert} -passin env:PP
     unset PP
     chmod 0444 ${cacert}
 }
