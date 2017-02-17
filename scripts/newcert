@@ -35,6 +35,6 @@ pushd ${cadir} >/dev/null
 make_cert $1 $2
 openssl pkcs12 -export -chain -CAfile ${cadir}/certs/ca.crt -inkey \
         ${cadir}/private/$1.key -in ${cadir}/certs/$1.crt -out \
-        ${cadir}/export/$1 popd > /dev/null
+        ${cadir}/export/$1
 
 popd > /dev/null
